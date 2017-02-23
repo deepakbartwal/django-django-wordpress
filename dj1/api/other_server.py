@@ -54,10 +54,7 @@ def ChangePasswordToServer(username, old_password, new_password, confirm_new_pas
             payload = {'old_password':old_password, 'new_password':new_password, 'confirm_new_password':confirm_new_password}
             headers = {"Authorization":"Token 0ff2eb42e048d998567a744b90b86aad18daea97", 'Content-type': 'application/json'}
             r = requests.post(CHANGE_PASSWORD_URL, data=json.dumps(payload), headers=headers)
-            pprint(r.json())
             if r.json()['status'] == True:
-                pprint('_________--trest______________--')
-                pprint(r.json())
                 return True
     return False
 

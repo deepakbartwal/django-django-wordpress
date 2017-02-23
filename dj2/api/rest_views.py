@@ -1,33 +1,19 @@
-# from rest_framework import viewsets
 from rest_framework import status
-# from rest_framework.authtoken.models import Token
-# from api.models import *
-# from api.serializers import *
+# from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.renderers import JSONRenderer
-from rest_framework.decorators import api_view, permission_classes, authentication_classes
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework.authentication import TokenAuthentication,SessionAuthentication, BasicAuthentication
-from pprint import pprint
 import json
 from django.conf import settings
 from rest_framework.authtoken.models import Token
 from rest_framework import permissions
 from django.contrib.auth.models import User
-from wordpress.models import *
-# from core.models import *
+from wordpress.models import WpUsers
 # from .serializers import *
+from pprint import pprint
 
-
-# class ChangePasswordFromServerView(APIView):
-#     """
-#     View to change the user password from other server
-#     """
-#     authentication_classes = (TokenAuthentication,)
-#     renderer_classes = (JSONRenderer,)
-#     permission_classes = (permissions.IsAuthenticated,)
-#     def post(self, request):
 
 class RegisterFromServerView(APIView):
     """
@@ -73,7 +59,6 @@ class UpdateFromServerView(APIView):
     permission_classes = (permissions.IsAuthenticated,)
 
     def post(self, request):
-        pprint("________________________rest view_________________________________-")
         #work here later ... its okey for now
         # serializer =  UserProfileSerializer(request.data)
         # if serializer.is_valid():
@@ -143,7 +128,6 @@ class ChangeUsernameFromServerView(APIView):
             wp_user.user_login = new_username
             user.save()
             wp_user.save()
-            pprint("_________________----debug rest view ____________________")
             return Response(data={'status': True}, status=status.HTTP_200_OK)
         return Response(data={'status': False}, status=status.HTTP_200_OK)
 

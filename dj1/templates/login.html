@@ -7,7 +7,7 @@
 <form method="post" action="{% url 'login' %}/?next={{ next }}">
     {% csrf_token %}
     <label class="float-label" for="Email">Email</label>
-    <input type="text" id="user_email" name='user_email' class="float-input" placeholder="Enter your email">
+    <input type="email" id="user_email" name='user_email' class="float-input" placeholder="Enter your email">
     <br>
     <label class="float-label" for="mobile">Password</label>
     <input type="password" class="float-input" id="password" name="password"  required pattern=".{8,}" title="8 characters minimum" placeholder="Enter your password">

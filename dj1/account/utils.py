@@ -32,13 +32,6 @@ def UpdateInfoUtil(data_dict, user):
     display_name = data_dict['display_name']
     user_url = data_dict['user_url']
     username = user.username
-
-    # profile_dict = {}
-    # profile_dict['user_email'] = user_email
-    # profile_dict['user_nicename'] = user_nicename
-    # prili
-
-
     if UpdateToServer(username=username, user_email=user_email, user_nicename=user_nicename, display_name=display_name, user_url=user_url):
         p = UserProfile.objects.get(user = user)
         user.email = user_email
