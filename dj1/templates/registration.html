@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<form id="registration_form"  action="{% url 'registration' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <h2>User registration form:- </h2>
+  <hr>
+  <label class="float-label" for="id_user_nicename">Name:</label>
+  {{ form.user_nicename|attr:"class:form-control"|attr:"type:text"|attr:"required:true"|attr:"autocomplete:off" }}
+  <br><br>
+  <label for="id_display_name">Display Name:</label>
+  {{ form.display_name|attr:"class:form-control"|attr:"type:text"|attr:"required:true"|attr:"autocomplete:off" }}
+  <br><br>
+  <label for="id_username">Username:</label>
+  {{ form.username|attr:"class:form-control"|attr:"type:text"|attr:"required:true"|attr:"autocomplete:off" }}
+  <br><br>
+  <label class="float-label" for="id_user_url">User Url:</label>
+  {{ form.user_url|attr:"class:form-control"|attr:"type:text"|attr:"required:true"|attr:"autocomplete:off" }}
+  <br><br>
+  <br><br>
+  <label for="id_user_email">User Email:</label>
+  {{ form.user_email|attr:"class:form-control"|attr:"type:email"|attr:"required:true"|attr:"autocomplete:off"}}
+  <p class="text-danger" id="user_email_error"></p>
+  <br>
+  <label for="password">Password:</label>
+  {{ form.password|attr:"class:form-control"|attr:"type:password"|attr:"required:true"|attr:"autocomplete:off" }}
+  <p class="text-danger" id="password_error"></p>
+  <br>
+
+  <label for="id_confirm_password">Confirm Password:</label>
+  {{ form.confirm_password|attr:"class:form-control"|attr:"type:password"|attr:"required:true"|attr:"autocomplete:off" }}
+  <p class="text-danger" id="confirm_password_error"></p>
+  <button type="submit">Submit</button>
+
+  <a href="{% url 'login' %}" class="m-10 text-color">
+    <br>
+  Already Registered ? <span class="signup">Login Here</span></a>
+
+</form>
+
+{% endblock %}
+
+{% block custom_js%}
+<!-- <script>//Form Validation Script
+// var user_email_check = false;
+// var user_phone_no_check = false
+var password_check = false;
+var confirm_password_check = false;
+
+$("#id_password").change(function(){
+  password_check = false;
+  $("#id_confirm_password").val("")
+  $("#confirm_password_error" ).text( "" );
+  if ($("#id_password").val() == ""){
+    $("#password_error").text("You can't leave this empty.")
+  }else{
+    // if ($("#id_password").val().length < 6){
+    //   $("#password_error" ).text( "Password must contain atleast 8 characters" );
+    var password_value = $("#id_password").val();
+    if( ((password_value.length < 6) || (!/\d/.test(password_value)) || (!/[a-z]/.test(password_value)) || (!/[A-Z]/.test(password_value)) || (!/[!@#$%^&*]/.test(password_value)) || (/[^0-9a-zA-Z!@#$%^&*]/.test(password_value))) == true ){
+      $("#password_error" ).text( "Invalid Password. Password must contain atlest 1special character(!@#$%^&*) 6 characters, 1 number, 1 upper and 1 lowercase " );
+    }else {
+      password_check = true;
+      $("#password_error" ).text( "" );
+    }
+  }
+});
+
+$("#id_confirm_password").blur(function(){
+  confirm_password_check = false;
+  if ($("#id_confirm_password").val() == ""){
+    $("#confirm_password_error").text("You can't leave this empty.")
+  }else {
+    if($("#id_confirm_password").val() != $("#id_password").val()){
+      $("#confirm_password_error").text("New password and confirm password do not match.")
+    }else {
+      $("#confirm_password_error" ).text( "" );
+      confirm_password_check = true;
+    }
+  }
+});
+
+$('#registration_form').submit(function(e) {
+  if (!(password_check && confirm_password_check)){
+    e.preventDefault();
+    alert('password_check ' + password_check)
+    alert('confirm_password_check ' + confirm_password_check)
+    alert('user_email_check ' + user_email_check)
+  }
+});
+</script> -->
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<form id="update_info_form" action="{% url 'update_info' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <h2>Update user information form:- </h2>
+  <hr>
+  <label class="float-label" for="id_user_nicename">Name:</label>
+  {{ form.user_nicename|attr:"class:form-control"|attr:"type:text"|attr:"required:true"|attr:"autocomplete:off" }}
+  <br><br>
+  <label for="id_display_name">Display Name:</label>
+  {{ form.display_name|attr:"class:form-control"|attr:"type:text"|attr:"required:true"|attr:"autocomplete:off" }}
+  <br><br>
+  <label for="id_user_url">User URL:</label>
+  {{ form.user_url|attr:"class:form-control"|attr:"type:text"|attr:"required:true"|attr:"autocomplete:off" }}
+  <br><br>
+  <label for="id_user_email">User Email:</label>
+  {{ form.user_email|attr:"class:form-control"|attr:"type:email"|attr:"required:true"|attr:"autocomplete:off"}}
+  <p class="text-danger" id="user_email_error"></p>
+  <button type="submit">Submit</button>
+</form>
+{% endblock %}
+
+{% block custom_js%}
+{% endblock %}

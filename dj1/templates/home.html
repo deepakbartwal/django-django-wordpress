@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block custom_css %}
+{% endblock %}
+
+{% block content %}
+this is home page. you are logged in.
+<a href="{% url 'logout' %}">Logout</a>
+<a href="{% url 'update_info' %}">Update information</a>
+
+{% endblock %}
+
+{% block js %}
+{% endblock %}
+
+{% block custom_js %}
+{% endblock %}

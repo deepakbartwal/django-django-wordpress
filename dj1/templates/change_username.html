@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% block content %}
+<form id="change_username_form" action="{% url 'change_username' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <h2>Change username form:- </h2>
+  <hr>
+  <label class="float-label" for="id_new_username">New username:</label>
+  {{ form.new_username|attr:"class:form-control"|attr:"type:text"|attr:"required:true"|attr:"autocomplete:off" }}
+  <button type="submit">Submit</button>
+</form>
+{% endblock %}
+
+{% block custom_js%}
+{% endblock %}
